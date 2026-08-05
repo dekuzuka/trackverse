@@ -204,8 +204,8 @@ Automatic Cross Platform Tracking
 - [x] Hero
 - [x] Trending
 - [x] Anime Picks
-- [ ] Popular Movies
-- [ ] Popular TV Shows
+- [x] Popular Movies
+- [x] Popular TV Shows
 - [ ] Why TrackVerse
 - [ ] Footer
 

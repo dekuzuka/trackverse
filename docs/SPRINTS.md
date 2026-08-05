@@ -124,8 +124,8 @@ Complete the public-facing homepage.
 
 - [x] Hero
 - [x] Trending
-- [ ] Popular Movies
-- [ ] Popular TV Shows
+- [x] Popular Movies
+- [x] Popular TV Shows
 - [x] Anime Picks
 - [ ] Why TrackVerse
 - [ ] Footer
@@ -137,7 +137,7 @@ Complete the public-facing homepage.
 - [x] Create reusable MediaSection
 - [x] Migrate Anime
 - [x] Migrate TrendingSection
-- [ ] Remove duplicate section components
+- [x] Remove duplicate section components
 
 ## UI Polish
 
