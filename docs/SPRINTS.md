@@ -124,7 +124,7 @@ Complete the public-facing homepage.
 
 - [ ] Popular Movies
 - [ ] Popular TV Shows
-- [ ] Anime Picks
+- [x] Anime Picks
 - [ ] Why TrackVerse
 - [ ] Footer
 

@@ -20,6 +20,11 @@ export default function MovieCard({
 
   const [hovered, setHovered] = useState(false);
 
+  const poster =
+    movie.poster_path?.startsWith("http")
+      ? movie.poster_path
+      : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
   return (
     <motion.div
       layout
@@ -33,18 +38,15 @@ export default function MovieCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Quick Preview */}
       <QuickPreview
         movie={movie}
         visible={hovered}
       />
 
-      {/* Card */}
       <div
         onClick={() => openPanel(movie)}
         className="cursor-pointer"
       >
-        {/* Poster */}
         <div
           className="
             overflow-hidden
@@ -60,8 +62,8 @@ export default function MovieCard({
           "
         >
           <Image
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title || movie.name || ""}
+            src={poster}
+            alt={movie.title ?? movie.name ?? "Poster"}
             width={320}
             height={480}
             className="
@@ -75,9 +77,7 @@ export default function MovieCard({
           />
         </div>
 
-        {/* Information */}
         <div className="mt-4">
-
           <h3
             className="
               line-clamp-1
@@ -86,7 +86,7 @@ export default function MovieCard({
               tracking-tight
             "
           >
-            {movie.title || movie.name}
+            {movie.title ?? movie.name}
           </h3>
 
           <div
@@ -100,18 +100,16 @@ export default function MovieCard({
             "
           >
             <span className="font-medium">
-              ⭐ {movie.vote_average.toFixed(1)}
+              ⭐ {(movie.vote_average ?? 0).toFixed(1)}
             </span>
 
             <span>
-              {(movie.release_date ||
-                movie.first_air_date ||
+              {(movie.release_date ??
+                movie.first_air_date ??
                 "").slice(0, 4)}
             </span>
           </div>
-
         </div>
-
       </div>
     </motion.div>
   );
