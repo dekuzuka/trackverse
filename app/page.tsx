@@ -1,18 +1,10 @@
-import React from "react";
 import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/home/Hero";
-import TrendingSection from "@/components/home/TrendingSection";
-import AnimeSection from "@/components/home/AnimeSection";
-
-// Some imported modules (like AnimeSection) may have an incorrect type
-// definition that TypeScript interprets as returning void. Cast to a
-// generic component type to ensure it can be used in JSX here.
-const AnimeSectionComponent = AnimeSection as unknown as React.ComponentType<any>;
+import MediaSection from "@/components/media/MediaSection";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#020617] text-white">
-
       {/* Background */}
       <div className="fixed inset-0 -z-20 bg-[#020617]" />
 
@@ -25,29 +17,37 @@ export default function Home() {
         "
       />
 
-      {/* Navigation */}
       <Navbar />
 
-      {/* Hero */}
       <Hero />
 
-      {/* Discover */}
-      <TrendingSection />
+      <MediaSection
+  label="DISCOVER"
+  title="Trending Now"
+  subtitle="Discover the biggest movies, TV shows and anime everyone is watching."
+  endpoint="/api/trending"
+/>
 
-      {/* Anime */}
-      <AnimeSectionComponent />
+<MediaSection
+  label="ANIME"
+  title="Anime Picks"
+  subtitle="Powered by AniList"
+  endpoint="/api/anime/popular"
+/>
 
-      {/* Coming Next */}
-      {/*
-        <PopularMoviesSection />
+<MediaSection
+  label="MOVIES"
+  title="Popular Movies"
+  subtitle="The biggest blockbusters from around the world."
+  endpoint="/api/movies/popular"
+/>
 
-        <PopularTVSection />
-
-        <FeatureSection />
-
-        <Footer />
-      */}
-
+<MediaSection
+  label="TV"
+  title="Popular TV Shows"
+  subtitle="Binge-worthy series everyone is talking about."
+  endpoint="/api/tv/popular"
+/>
     </main>
   );
 }
