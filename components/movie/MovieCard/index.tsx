@@ -28,11 +28,14 @@ export default function MovieCard({
   return (
     <motion.div
       layout
-      whileHover={{ y: -10 }}
+      whileHover={{
+        y: -10,
+        scale: 1.02,
+      }}
       transition={{
         type: "spring",
-        stiffness: 280,
-        damping: 22,
+        stiffness: 260,
+        damping: 20,
       }}
       className="relative group"
       onMouseEnter={() => setHovered(true)}
@@ -49,6 +52,7 @@ export default function MovieCard({
       >
         <div
           className="
+            relative
             overflow-hidden
             rounded-3xl
             border
@@ -56,9 +60,9 @@ export default function MovieCard({
             bg-white/[0.03]
             backdrop-blur-xl
             transition-all
-            duration-300
-            group-hover:border-cyan-400/50
-            group-hover:shadow-[0_0_40px_rgba(34,211,238,0.18)]
+            duration-500
+            group-hover:border-cyan-400/60
+            group-hover:shadow-[0_20px_60px_rgba(34,211,238,0.22)]
           "
         >
           <Image
@@ -70,9 +74,27 @@ export default function MovieCard({
               h-auto
               w-full
               object-cover
-              transition-transform
+              transition-all
+              duration-700
+              group-hover:scale-110
+              group-hover:brightness-110
+            "
+          />
+
+          {/* Cinematic Gradient */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/70
+              via-transparent
+              to-transparent
+              opacity-70
+              transition-opacity
               duration-500
-              group-hover:scale-105
+              group-hover:opacity-100
             "
           />
         </div>
@@ -84,6 +106,9 @@ export default function MovieCard({
               text-lg
               font-semibold
               tracking-tight
+              transition-colors
+              duration-300
+              group-hover:text-cyan-300
             "
           >
             {movie.title ?? movie.name}
