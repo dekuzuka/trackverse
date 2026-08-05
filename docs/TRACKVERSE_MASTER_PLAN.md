@@ -209,6 +209,12 @@ Automatic Cross Platform Tracking
 - [ ] Why TrackVerse
 - [ ] Footer
 
+### Homepage Polish
+
+- [x] Reusable MediaSection
+- [x] Premium Movie Cards
+- [x] Redesigned Quick Preview
+
 ### Providers
 
 ✅ TMDB integrated

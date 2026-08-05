@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/home/Hero";
 import MediaSection from "@/components/media/MediaSection";
+import WhyTrackVerse from "../components/home/WhyTrackVerse";
 
 export default function Home() {
   return (
@@ -63,6 +64,8 @@ export default function Home() {
         showViewAll
         viewAllHref="/tv"
       />
+
+      <WhyTrackVerse />
 
       {/* Next Sprint */}
       {/*
