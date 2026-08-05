@@ -178,5 +178,25 @@ Automatic Cross Platform Tracking
 
 ---
 
-Status:
-🟢 Planning
+### Architecture Principles
+
+- Avoid premature abstraction.
+- Reuse components only after a clear repeated pattern emerges.
+- Prefer readability over cleverness.
+
+### Home Page
+
+- [x] Hero Section
+- [x] Trending Section
+  - [x] TMDB API integration
+         - [x] Trending Movies
+         - [x] Trending TV
+         - [x] Trending All
+         - [x] Popular Movies
+         - [x] Popular TV Shows
+         - [x] Popular Anime (TMDB Discover API)
+  - [x] Responsive grid layout
+  - [x] Loading skeleton
+  - [x] Reusable MovieCard component
+
+  

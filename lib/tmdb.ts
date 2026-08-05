@@ -10,6 +10,10 @@ export const tmdb = axios.create({
   },
 });
 
+/* ----------------------------- */
+/* Trending */
+/* ----------------------------- */
+
 export async function getTrendingMovies() {
   const response = await tmdb.get("/trending/movie/week");
   return response.data.results;
@@ -22,5 +26,30 @@ export async function getTrendingTV() {
 
 export async function getTrendingAll() {
   const response = await tmdb.get("/trending/all/week");
+  return response.data.results;
+}
+
+/* ----------------------------- */
+/* Popular */
+/* ----------------------------- */
+
+export async function getPopularMovies() {
+  const response = await tmdb.get("/movie/popular");
+  return response.data.results;
+}
+
+export async function getPopularTVShows() {
+  const response = await tmdb.get("/tv/popular");
+  return response.data.results;
+}
+
+export async function getPopularAnime() {
+  const response = await tmdb.get("/discover/tv", {
+    params: {
+      with_genres: 16,
+      sort_by: "popularity.desc",
+    },
+  });
+
   return response.data.results;
 }
