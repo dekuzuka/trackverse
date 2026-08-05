@@ -199,4 +199,23 @@ Automatic Cross Platform Tracking
   - [x] Loading skeleton
   - [x] Reusable MovieCard component
 
-  
+### Landing Page
+
+- [x] Hero
+- [x] Trending
+- [x] Anime Picks
+- [ ] Popular Movies
+- [ ] Popular TV Shows
+- [ ] Why TrackVerse
+- [ ] Footer
+
+### Providers
+
+✅ TMDB integrated
+✅ AniList integrated
+
+Architecture
+
+Movies → TMDB
+TV Shows → TMDB
+Anime → AniList

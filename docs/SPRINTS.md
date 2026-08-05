@@ -122,6 +122,8 @@ Complete the public-facing homepage.
 
 ## Home Sections
 
+- [x] Hero
+- [x] Trending
 - [ ] Popular Movies
 - [ ] Popular TV Shows
 - [x] Anime Picks
