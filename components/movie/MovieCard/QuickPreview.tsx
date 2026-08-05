@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { Movie } from "@/lib/types";
 
 interface QuickPreviewProps {
@@ -11,57 +14,163 @@ export default function QuickPreview({
   movie,
   visible,
 }: QuickPreviewProps) {
+  const backdrop = movie.backdrop_path
+    ? movie.backdrop_path.startsWith("http")
+      ? movie.backdrop_path
+      : `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
+    : movie.poster_path.startsWith("http")
+    ? movie.poster_path
+    : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+  const year = (
+    movie.release_date ??
+    movie.first_air_date ??
+    ""
+  ).slice(0, 4);
+
+  const genres =
+    Array.isArray(movie.genres) &&
+    typeof movie.genres[0] === "string"
+      ? (movie.genres as string[]).slice(0, 3).join(" • ")
+      : "";
+
   return (
-    <div
-      className={`
-        absolute
-        left-1/2
-        -translate-x-1/2
-        bottom-full
-        mb-4
-        w-72
-        rounded-2xl
-        border
-        border-white/10
-        bg-[#0B1220]/95
-        backdrop-blur-xl
-        p-5
-        shadow-2xl
-        transition-all
-        duration-200
-        z-50
-        ${
-          visible
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-2 pointer-events-none"
-        }
-      `}
-    >
-      <h3 className="text-lg font-bold">
-        {movie.title || movie.name}
-      </h3>
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 10,
+            scale: 0.97,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            y: 10,
+            scale: 0.97,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 280,
+            damping: 22,
+          }}
+          className="
+            absolute
+            left-1/2
+            bottom-full
+            z-50
+            mb-3
+            w-[340px]
+            -translate-x-1/2
+            overflow-hidden
+            rounded-3xl
+            border
+            border-white/10
+            bg-[#08111E]/95
+            shadow-[0_25px_70px_rgba(0,0,0,0.65)]
+            backdrop-blur-2xl
+          "
+        >
+          {/* Backdrop */}
 
-      <p className="text-zinc-400 mt-1">
-        ⭐ {movie.vote_average.toFixed(1)}
-      </p>
+          <div className="relative h-28 w-full">
+            <Image
+              src={backdrop}
+              alt={movie.title ?? movie.name ?? ""}
+              fill
+              className="object-cover"
+            />
 
-      <span className="inline-block mt-3 rounded-full bg-cyan-500/20 px-3 py-1 text-sm text-cyan-300">
-        Watching
-      </span>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#08111E] via-black/20 to-transparent" />
+          </div>
 
-      <div className="mt-5 space-y-2">
-        <button className="w-full rounded-xl bg-cyan-500 py-2 font-semibold hover:bg-cyan-400 transition">
-          ▶ Continue
-        </button>
+          {/* Content */}
 
-        <button className="w-full rounded-xl bg-zinc-800 py-2 hover:bg-zinc-700 transition">
-          ♡ Favorite
-        </button>
+          <div className="p-4">
 
-        <button className="w-full rounded-xl bg-zinc-800 py-2 hover:bg-zinc-700 transition">
-          ℹ More Info
-        </button>
-      </div>
-    </div>
+            <h3 className="line-clamp-1 text-lg font-bold">
+              {movie.title ?? movie.name}
+            </h3>
+
+            <div className="mt-2 flex items-center gap-3 text-sm text-zinc-400">
+
+              <span>
+                ⭐ {(movie.vote_average ?? 0).toFixed(1)}
+              </span>
+
+              {year && <span>{year}</span>}
+
+              {movie.media_type && (
+                <span className="capitalize">
+                  {movie.media_type}
+                </span>
+              )}
+
+            </div>
+
+            {genres && (
+              <p className="mt-3 text-sm text-cyan-300">
+                {genres}
+              </p>
+            )}
+
+            <p className="mt-3 line-clamp-2 text-sm leading-6 text-zinc-300">
+              {movie.overview || "No description available."}
+            </p>
+
+            <div className="mt-5">
+
+              <button
+                className="
+                  w-full
+                  rounded-xl
+                  bg-cyan-500
+                  py-3
+                  font-semibold
+                  transition
+                  hover:bg-cyan-400
+                "
+              >
+                ▶ Continue Watching
+              </button>
+
+              <div className="mt-3 grid grid-cols-2 gap-3">
+
+                <button
+                  className="
+                    rounded-xl
+                    bg-white/5
+                    py-3
+                    transition
+                    hover:bg-white/10
+                  "
+                >
+                  ♡ Favorite
+                </button>
+
+                <button
+                  className="
+                    rounded-xl
+                    bg-white/5
+                    py-3
+                    transition
+                    hover:bg-white/10
+                  "
+                >
+                  ⓘ Details
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

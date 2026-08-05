@@ -1,6 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/home/Hero";
-
 import MediaSection from "@/components/media/MediaSection";
 
 export default function Home() {

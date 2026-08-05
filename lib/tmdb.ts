@@ -10,46 +10,88 @@ export const tmdb = axios.create({
   },
 });
 
-/* ----------------------------- */
-/* Trending */
-/* ----------------------------- */
+/* -------------------------------- */
+/* TMDB → TrackVerse Media Mapper */
+/* -------------------------------- */
 
-export async function getTrendingMovies() {
-  const response = await tmdb.get("/trending/movie/week");
-  return response.data.results;
+function normalizeMedia(item: any) {
+  return {
+    id: item.id,
+
+    title: item.title ?? item.name,
+
+    name: item.name,
+
+    poster_path: item.poster_path,
+
+    backdrop_path: item.backdrop_path,
+
+    vote_average: item.vote_average ?? 0,
+
+    release_date:
+      item.release_date ??
+      item.first_air_date ??
+      "",
+
+    first_air_date: item.first_air_date,
+
+    overview: item.overview,
+
+    media_type:
+      item.media_type ??
+      (item.title ? "movie" : "tv"),
+
+    genres: item.genre_ids ?? [],
+
+    adult: item.adult,
+
+    original_language: item.original_language,
+  };
 }
 
-export async function getTrendingTV() {
-  const response = await tmdb.get("/trending/tv/week");
-  return response.data.results;
-}
+/* -------------------------------- */
+/* Generic Fetcher */
+/* -------------------------------- */
 
-export async function getTrendingAll() {
-  const response = await tmdb.get("/trending/all/week");
-  return response.data.results;
-}
-
-/* ----------------------------- */
-/* Popular */
-/* ----------------------------- */
-
-export async function getPopularMovies() {
-  const response = await tmdb.get("/movie/popular");
-  return response.data.results;
-}
-
-export async function getPopularTVShows() {
-  const response = await tmdb.get("/tv/popular");
-  return response.data.results;
-}
-
-export async function getPopularAnime() {
-  const response = await tmdb.get("/discover/tv", {
-    params: {
-      with_genres: 16,
-      sort_by: "popularity.desc",
-    },
+async function fetchMedia(endpoint: string, params = {}) {
+  const response = await tmdb.get(endpoint, {
+    params,
   });
 
-  return response.data.results;
+  return response.data.results.map(normalizeMedia);
+}
+
+/* -------------------------------- */
+/* Trending */
+/* -------------------------------- */
+
+export function getTrendingMovies() {
+  return fetchMedia("/trending/movie/week");
+}
+
+export function getTrendingTV() {
+  return fetchMedia("/trending/tv/week");
+}
+
+export function getTrendingAll() {
+  return fetchMedia("/trending/all/week");
+}
+
+/* -------------------------------- */
+/* Popular */
+/* -------------------------------- */
+
+export function getPopularMovies() {
+  return fetchMedia("/movie/popular");
+}
+
+export function getPopularTVShows() {
+  return fetchMedia("/tv/popular");
+}
+
+export function getPopularAnime() {
+  return fetchMedia("/discover/tv", {
+    with_genres: 16,
+    sort_by: "popularity.desc",
+  });
 }

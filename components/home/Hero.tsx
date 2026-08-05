@@ -7,12 +7,13 @@ export default function Hero() {
           relative
           mx-auto
           flex
-          min-h-[880px]
+          min-h-[980px]
           max-w-[1900px]
           items-center
           overflow-visible
           px-16
           pt-8
+          pb-24
         "
       >
         {/* LEFT SIDE */}
