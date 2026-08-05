@@ -132,6 +132,13 @@ Complete the public-facing homepage.
 
 ---
 
+### Refactoring
+
+- [x] Create reusable MediaSection
+- [x] Migrate Anime
+- [x] Migrate TrendingSection
+- [ ] Remove duplicate section components
+
 ## UI Polish
 
 - [ ] Section spacing consistency
