@@ -206,7 +206,7 @@ Automatic Cross Platform Tracking
 - [x] Anime Picks
 - [x] Popular Movies
 - [x] Popular TV Shows
-- [ ] Why TrackVerse
+- [x] Why TrackVerse
 - [ ] Footer
 
 ### Homepage Polish

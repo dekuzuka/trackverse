@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/home/Hero";
 import MediaSection from "@/components/media/MediaSection";
 import WhyTrackVerse from "../components/home/WhyTrackVerse";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   return (
@@ -67,12 +68,8 @@ export default function Home() {
 
       <WhyTrackVerse />
 
-      {/* Next Sprint */}
-      {/*
-        <WhyTrackVerse />
-
-        <Footer />
-      */}
+      {/* Footer */}
+      <Footer />
 
     </main>
   );
