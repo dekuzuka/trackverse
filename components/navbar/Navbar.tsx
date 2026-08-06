@@ -59,29 +59,33 @@ export default function Navbar() {
             />
           </Link>
 
+          {/* TODO: Replace # with /myverse when the MyVerse page is implemented. */}
           <Link
-            href="/myverse"
+            href="#"
             className="font-medium text-white transition hover:text-cyan-400"
           >
             MyVerse
           </Link>
 
+          {/* TODO: Replace # with /movies when the Movies page is implemented. */}
           <Link
-            href="/movies"
+            href="#"
             className="font-medium text-white transition hover:text-cyan-400"
           >
             Movies
           </Link>
 
+          {/* TODO: Replace # with /tv when the TV page is implemented. */}
           <Link
-            href="/tv"
+            href="#"
             className="font-medium text-white transition hover:text-cyan-400"
           >
             TV Shows
           </Link>
 
+          {/* TODO: Replace # with /anime when the Anime page is implemented. */}
           <Link
-            href="/anime"
+            href="#"
             className="font-medium text-white transition hover:text-cyan-400"
           >
             Anime
@@ -92,7 +96,9 @@ export default function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-6">
 
-          <button
+          {/* TODO: Replace # with /search when the Search page is implemented. */}
+          <Link
+            href="#"
             className="
               rounded-full
               p-2
@@ -105,13 +111,19 @@ export default function Navbar() {
               size={22}
               className="text-white"
             />
-          </button>
+          </Link>
 
-          <button className="font-medium text-white transition hover:text-cyan-400">
+          {/* TODO: Replace # with /login when authentication pages are implemented. */}
+          <Link
+            href="#"
+            className="font-medium text-white transition hover:text-cyan-400"
+          >
             Log in
-          </button>
+          </Link>
 
-          <button
+          {/* TODO: Replace # with /signup when authentication pages are implemented. */}
+          <Link
+            href="#"
             className="
               rounded-xl
               bg-cyan-400
@@ -127,7 +139,7 @@ export default function Navbar() {
             "
           >
             Sign Up
-          </button>
+          </Link>
 
         </div>
       </nav>

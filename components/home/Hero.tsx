@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import PosterRibbon from "./PosterRibbon";
 
 export default function Hero() {
@@ -50,13 +52,13 @@ export default function Hero() {
               tracking-[-0.03em]
             "
           >
-            Everything You've
+            Everything You&apos;ve
             <br />
             Watched.
             <br />
 
             <span className="text-cyan-400">
-              Everything You'll
+              Everything You&apos;ll
             </span>
 
             <br />
@@ -84,7 +86,9 @@ export default function Hero() {
 
           <div className="mt-12 flex gap-5">
 
-            <button
+            {/* TODO: Replace # with /myverse when the tracking onboarding flow is implemented. */}
+            <Link
+              href="#"
               className="
                 rounded-2xl
                 bg-cyan-400
@@ -100,9 +104,11 @@ export default function Hero() {
               "
             >
               Start Tracking →
-            </button>
+            </Link>
 
-            <button
+            {/* TODO: Replace # with /discover when the Discover page is implemented. */}
+            <Link
+              href="#"
               className="
                 rounded-2xl
                 border
@@ -119,7 +125,7 @@ export default function Hero() {
               "
             >
               Explore →
-            </button>
+            </Link>
 
           </div>
 

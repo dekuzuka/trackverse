@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { Movie } from "@/lib/types";
+
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export const tmdb = axios.create({
@@ -14,7 +16,27 @@ export const tmdb = axios.create({
 /* TMDB → TrackVerse Media Mapper */
 /* -------------------------------- */
 
-function normalizeMedia(item: any) {
+interface TMDBMediaItem {
+  id: number;
+  title?: string;
+  name?: string;
+  poster_path: string;
+  backdrop_path?: string;
+  vote_average?: number;
+  release_date?: string;
+  first_air_date?: string;
+  overview?: string;
+  media_type?: string;
+  genre_ids?: number[];
+  adult?: boolean;
+  original_language?: string;
+}
+
+interface TMDBListResponse {
+  results: TMDBMediaItem[];
+}
+
+function normalizeMedia(item: TMDBMediaItem): Movie {
   return {
     id: item.id,
 
@@ -53,8 +75,11 @@ function normalizeMedia(item: any) {
 /* Generic Fetcher */
 /* -------------------------------- */
 
-async function fetchMedia(endpoint: string, params = {}) {
-  const response = await tmdb.get(endpoint, {
+async function fetchMedia(
+  endpoint: string,
+  params: Record<string, string | number | boolean> = {},
+): Promise<Movie[]> {
+  const response = await tmdb.get<TMDBListResponse>(endpoint, {
     params,
   });
 

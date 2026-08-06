@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Movie } from "@/lib/types";
@@ -27,6 +28,11 @@ export default function QuickPreview({
     movie.first_air_date ??
     ""
   ).slice(0, 4);
+
+  const detailsHref =
+    movie.media_type === "movie" || !movie.media_type
+      ? `/title/movie/${movie.id}`
+      : "#";
 
   const genres =
     Array.isArray(movie.genres) &&
@@ -152,17 +158,21 @@ export default function QuickPreview({
                   ♡ Favorite
                 </button>
 
-                <button
+                {/* TODO: Replace # with TV/anime detail routes when those pages are implemented. */}
+                <Link
+                  href={detailsHref}
                   className="
+                    block
                     rounded-xl
                     bg-white/5
                     py-3
+                    text-center
                     transition
                     hover:bg-white/10
                   "
                 >
                   ⓘ Details
-                </button>
+                </Link>
 
               </div>
 

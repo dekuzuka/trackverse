@@ -138,7 +138,7 @@ export default function MediaSection({
           <div className="text-center">
 
             <h3 className="text-xl font-semibold text-red-400">
-              Couldn't load this section.
+              Couldn&apos;t load this section.
             </h3>
 
             <p className="mt-2 text-zinc-400">

@@ -14,12 +14,15 @@ export default function Footer() {
 
           <div>
 
-            <h2 className="text-3xl font-black tracking-tight">
+            <Link
+              href="/"
+              className="inline-block text-3xl font-black tracking-tight transition hover:opacity-90"
+            >
               Track
               <span className="text-cyan-400">
                 Verse
               </span>
-            </h2>
+            </Link>
 
             <p className="mt-6 leading-8 text-zinc-400">
               Your entertainment universe in one place.
@@ -38,29 +41,33 @@ export default function Footer() {
 
             <div className="space-y-4 text-zinc-400">
 
+              {/* TODO: Replace # with /discover when the Discover page is implemented. */}
               <Link
-                href="/discover"
+                href="#"
                 className="block hover:text-cyan-400 transition"
               >
                 Discover
               </Link>
 
+              {/* TODO: Replace # with /movies when the Movies page is implemented. */}
               <Link
-                href="/movies"
+                href="#"
                 className="block hover:text-cyan-400 transition"
               >
                 Movies
               </Link>
 
+              {/* TODO: Replace # with /tv when the TV page is implemented. */}
               <Link
-                href="/tv"
+                href="#"
                 className="block hover:text-cyan-400 transition"
               >
                 TV Shows
               </Link>
 
+              {/* TODO: Replace # with /anime when the Anime page is implemented. */}
               <Link
-                href="/anime"
+                href="#"
                 className="block hover:text-cyan-400 transition"
               >
                 Anime
@@ -80,13 +87,37 @@ export default function Footer() {
 
             <div className="space-y-4 text-zinc-400">
 
-              <p>Games (Soon)</p>
+              {/* TODO: Replace # with /games when the Games page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Games (Soon)
+              </Link>
 
-              <p>Books (Soon)</p>
+              {/* TODO: Replace # with /books when the Books page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Books (Soon)
+              </Link>
 
-              <p>Music (Soon)</p>
+              {/* TODO: Replace # with /music when the Music page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Music (Soon)
+              </Link>
 
-              <p>Statistics (Soon)</p>
+              {/* TODO: Replace # with /statistics when the Statistics page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Statistics (Soon)
+              </Link>
 
             </div>
 
@@ -102,13 +133,37 @@ export default function Footer() {
 
             <div className="space-y-4 text-zinc-400">
 
-              <p>About</p>
+              {/* TODO: Replace # with /about when the About page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                About
+              </Link>
 
-              <p>Roadmap</p>
+              {/* TODO: Replace # with /roadmap when the Roadmap page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Roadmap
+              </Link>
 
-              <p>Privacy</p>
+              {/* TODO: Replace # with /privacy when the Privacy page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Privacy
+              </Link>
 
-              <p>Terms</p>
+              {/* TODO: Replace # with /terms when the Terms page is implemented. */}
+              <Link
+                href="#"
+                className="block hover:text-cyan-400 transition"
+              >
+                Terms
+              </Link>
 
             </div>
 

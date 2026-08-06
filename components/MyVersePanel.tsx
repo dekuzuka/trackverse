@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { useTrackPanel } from "@/context/TrackPanelContext";
 
 export default function MyVersePanel() {
@@ -8,6 +11,11 @@ export default function MyVersePanel() {
   if (!isOpen || !selectedMovie) {
     return null;
   }
+
+  const detailsHref =
+    selectedMovie.media_type === "movie" || !selectedMovie.media_type
+      ? `/title/movie/${selectedMovie.id}`
+      : "#";
 
   return (
     <>
@@ -29,9 +37,11 @@ export default function MyVersePanel() {
         </button>
 
         {/* Poster */}
-        <img
+        <Image
           src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
           alt={selectedMovie.title || selectedMovie.name || ""}
+          width={500}
+          height={750}
           className="w-full rounded-2xl mb-6"
         />
 
@@ -70,9 +80,13 @@ export default function MyVersePanel() {
           </div>
         </div>
 
-        <button className="mt-8 w-full rounded-xl border border-cyan-400 py-3 hover:bg-cyan-500/20 transition">
+        {/* TODO: Replace # with TV/anime detail routes when those pages are implemented. */}
+        <Link
+          href={detailsHref}
+          className="mt-8 block w-full rounded-xl border border-cyan-400 py-3 text-center hover:bg-cyan-500/20 transition"
+        >
           More Info →
-        </button>
+        </Link>
       </div>
     </>
   );
